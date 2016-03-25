@@ -104,7 +104,7 @@
 
                     if(data.internal && data.instant){
                         o.$textfield.append(data.string);
-                        continueQueue()
+                        continueQueue();
                         return;
                     }
 
@@ -115,31 +115,31 @@
                         });
                         counter++;
                     } else {
-                        continueQueue()
+                        continueQueue();
                     }
                 }
 
                 function writeText(string, internal) {
-                    data = string.toString();
+                    var data = string.toString(),
+                        dataObj = {
+                            string:data,
+                            userName:"",
+                            internal: internal,
+                            instant: false
+                        }
 
                     if(internal) {
                         //add modifier to signify lydia input
                         //you can send data to a server here
                         //and reply back with response
-                        o.queueData.push({
-                            string:"Lydia: "+data,
-                            userName:"lydia",
-                            internal: internal,
-                            instant: undefined
-                        });
+                        dataObj.userName = "Lydia";
+                        dataObj.string = dataObj.userName+" "+dataObj.string;
+                        o.queueData.push(dataObj);
                     }else {
                         //add modifier to signify user input
-                        o.queueData.push({
-                            string:"> "+data,
-                            userName:"user",
-                            internal: true,
-                            instant: true
-                        });
+                        dataObj.userName = "User";
+                        dataObj.string = "> "+dataObj.string;
+                        o.queueData.push(dataObj);
                     }
 
                     //if using a REST service or any other XHR call
