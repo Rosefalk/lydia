@@ -100,12 +100,12 @@
                         o.textRepeater = undefined;
                         o.queueData.shift();
                         writeQueue();
-                        return false;
                     }
 
                     if(data.internal && data.instant){
                         o.$textfield.append(data.string);
                         continueQueue()
+                        return;
                     }
 
                     if (counter <= data.string.length) {
@@ -135,7 +135,7 @@
                     }else {
                         //add modifier to signify user input
                         o.queueData.push({
-                            string:">ttt "+data,
+                            string:"> "+data,
                             userName:"user",
                             internal: true,
                             instant: true
