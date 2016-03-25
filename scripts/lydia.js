@@ -76,11 +76,13 @@
                 }
 
                 function writeQueue() {
+                    var data = o.queueData[0];
                     if (o.textRepeater === undefined && o.queueData.length > 0) {
-                        o.$textfield = $(document.createElement('span')).addClass(o.queueData[0].userName);
+                        o.$textfield = $(document.createElement('span')).addClass(data.userName);
                         o.$blink.before(o.$textfield);
                         o.$blink.css('display', 'none');
                         var counter = 0;
+
                         o.textRepeater = setInterval(function() {
                             textRelay(counter)
                             counter++;
@@ -89,36 +91,55 @@
                 }
 
                 function textRelay(counter) {
+                    var data = o.queueData[0];
 
-                    var data = o.queueData[0].string;
-                    if (counter <= data.length) {
-                        o.$textfield.append(data[counter]);
-                        o.$console.scrollTop(function() {
-                            return this.scrollHeight;
-                        });
-                        counter++;
-                    } else {
+                    function continueQueue() {
                         o.$blink.before('<br />');
                         o.$blink.css('display', 'block');
                         clearInterval(o.textRepeater);
                         o.textRepeater = undefined;
                         o.queueData.shift();
                         writeQueue();
-                        return false;
+                    }
+
+                    if(data.internal && data.instant){
+                        o.$textfield.append(data.string);
+                        continueQueue();
+                        return;
+                    }
+
+                    if (counter <= data.string.length) {
+                        o.$textfield.append(data.string[counter]);
+                        o.$console.scrollTop(function() {
+                            return this.scrollHeight;
+                        });
+                        counter++;
+                    } else {
+                        continueQueue();
                     }
                 }
 
                 function writeText(string, internal) {
-                    data = string.toString();
+                    var data = string.toString(),
+                        dataObj = {
+                            string:data,
+                            userName:"",
+                            internal: internal,
+                            instant: false
+                        }
 
                     if(internal) {
                         //add modifier to signify lydia input
                         //you can send data to a server here
                         //and reply back with response
-                        o.queueData.push({string:"Lydia: "+data, userName:"lydia"})
+                        dataObj.userName = "Lydia";
+                        dataObj.string = dataObj.userName+" "+dataObj.string;
+                        o.queueData.push(dataObj);
                     }else {
                         //add modifier to signify user input
-                        o.queueData.push({string:"> "+data, userName:"user"})
+                        dataObj.userName = "User";
+                        dataObj.string = "> "+dataObj.string;
+                        o.queueData.push(dataObj);
                     }
 
                     //if using a REST service or any other XHR call
