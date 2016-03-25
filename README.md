@@ -1,4 +1,4 @@
-# lydia2
+# lydia
 A frontend quake like "tilde" console
 
 Lydia is the codename for a frontend drop down terminal in the old quake "tilde" style.
