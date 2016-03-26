@@ -133,12 +133,12 @@
                         //you can send data to a server here
                         //and reply back with response
                         dataObj.userName = "Lydia";
-                        dataObj.string = dataObj.userName+" "+dataObj.string;
+                        dataObj.string = dataObj.userName+': '+dataObj.string;
                         o.queueData.push(dataObj);
                     }else {
                         //add modifier to signify user input
                         dataObj.userName = "User";
-                        dataObj.string = "> "+dataObj.string;
+                        dataObj.string = dataObj.userName+': '+dataObj.string;
                         o.queueData.push(dataObj);
                     }
 
