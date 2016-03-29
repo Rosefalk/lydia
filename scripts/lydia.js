@@ -7,7 +7,7 @@
                     $console: undefined,
                     $blink: undefined,
                     $textField: undefined,
-                    commandKey: 112,
+                    commandKey: 119,
                     lydiaSpeed: 15,
                     open: false,
                     textRepeater: undefined,
