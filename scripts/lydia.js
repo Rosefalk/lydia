@@ -46,7 +46,7 @@
                         } else {
                             o.$lydia.children('input').focus();
 
-                            if (o.$lydia.children('.console').text() == '') {
+							if (o.$lydia.children('.console').children().length == 1) {
 
                                 o.$lydia.animate({
                                     height: o.height
