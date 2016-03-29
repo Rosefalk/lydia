@@ -10,10 +10,10 @@
 .console,.query{
     width: 100%;
     padding: 10px;
-    border: 1px solid #0C0;
     box-sizing: border-box;
     background-color: rgba(0,0,0,0.7);
     color: #0C0;
+    border: 1px solid #0C0;
     background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAE0lEQVQImWNgOMcghYGxA4pUAgDN8w2ZtGfV5wAAAABJRU5ErkJggg==);
 }
 
@@ -21,7 +21,7 @@
     height: calc(100% - 48px);
     resize: none;
     border-bottom: 0px;
-    padding: bottom: 48px;
+    padding-bottom: 48px;
 }
 
 .query{
