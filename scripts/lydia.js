@@ -12,7 +12,8 @@
                     open: false,
                     textRepeater: undefined,
                     queueData: [],
-                    height: '60%'
+                    height: '60%',
+                    userName: "User"
                 };
 
             var options = $.extend(defaults, options);
@@ -137,7 +138,7 @@
                         o.queueData.push(dataObj);
                     }else {
                         //add modifier to signify user input
-                        dataObj.userName = "User";
+                        dataObj.userName = o.userName;
                         dataObj.string = dataObj.userName+': '+dataObj.string;
                         o.queueData.push(dataObj);
                     }
