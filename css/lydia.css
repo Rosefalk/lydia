@@ -1,6 +1,7 @@
 .lydia-wrapper{
     position: fixed;
     top: 0px;
+    left: 0px;
     width: 100%;
     z-index: 3;
     height: 0px;
@@ -8,7 +9,9 @@
 }
 
 .console,.query{
-    width: 100%;
+    width: 90%;
+    max-width: 1024px;
+    margin: 0 auto;
     padding: 10px;
     box-sizing: border-box;
     background-color: rgba(0,0,0,0.7);
@@ -25,6 +28,7 @@
 }
 
 .query{
+    display: block;
     height: 46px;
 }
 
