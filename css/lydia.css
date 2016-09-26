@@ -37,4 +37,13 @@
 	width: 5px;
 	height: 14px;
 	background-color: #0C0;
+    -webkit-animation: pulsate 1s ease-out;
+    -webkit-animation-iteration-count: infinite;
+    opacity: 0.0
+}
+
+@-webkit-keyframes pulsate {
+    0% {-webkit-transform: opacity: 0.0;}
+    50% {opacity: 1.0;}
+    100% {-webkit-transform:  opacity: 0.0;}
 }
