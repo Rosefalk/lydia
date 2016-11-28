@@ -1,6 +1,7 @@
 .lydia-wrapper{
     position: fixed;
     top: 0px;
+    left: 0px;
     width: 100%;
     z-index: 3;
     height: 0px;
@@ -8,12 +9,14 @@
 }
 
 .console,.query{
-    width: 100%;
+    width: 90%;
+    max-width: 1024px;
+    margin: 0 auto;
     padding: 10px;
-    border: 1px solid #0C0;
     box-sizing: border-box;
     background-color: rgba(0,0,0,0.7);
     color: #0C0;
+    border: 1px solid #0C0;
     background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAE0lEQVQImWNgOMcghYGxA4pUAgDN8w2ZtGfV5wAAAABJRU5ErkJggg==);
 }
 
@@ -21,10 +24,11 @@
     height: calc(100% - 48px);
     resize: none;
     border-bottom: 0px;
-    padding: bottom: 48px;
+    padding-bottom: 48px;
 }
 
 .query{
+    display: block;
     height: 46px;
 }
 
@@ -33,4 +37,13 @@
 	width: 5px;
 	height: 14px;
 	background-color: #0C0;
+    -webkit-animation: pulsate 1s ease-out;
+    -webkit-animation-iteration-count: infinite;
+    opacity: 0.0
+}
+
+@-webkit-keyframes pulsate {
+    0% {-webkit-transform: opacity: 0.0;}
+    50% {opacity: 1.0;}
+    100% {-webkit-transform:  opacity: 0.0;}
 }
